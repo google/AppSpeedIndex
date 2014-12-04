@@ -21,11 +21,17 @@ def main():
       action='append', default=[])
   (options, args) = parser.parse_args()
   ran = []
-  for name in sorted(ACTIVITIES.keys() + options.activity):
+  for name in sorted(ACTIVITIES.keys()):
     activity = ACTIVITIES[name]
     if options.filter and name not in options.filter:
       print 'Skipping ', name
       continue
+    print 'Launching ', name
+    ran += [name]
+    subprocess.check_output(['python', 'speed_index.py', '-v', '-a', activity,
+                             '-o', os.path.join('/tmp', name)])
+  for activity in sorted(options.activity):
+    name = activity.split('/')[0].split('.')[-1]
     print 'Launching ', name
     ran += [name]
     subprocess.check_output(['python', 'speed_index.py', '-v', '-a', activity,
