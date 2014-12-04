@@ -1,0 +1,9 @@
+android_app/bin/
+android_app/build.xml
+android_app/gen/
+android_app/local.properties
+android_app/proguard-project.txt
+android_app/project.properties
+*.pyc
+bitmaptools
+speed_index.mp4
